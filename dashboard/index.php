@@ -43,29 +43,99 @@ $numOnlineUsers = $KeyAuthApp->numOnlineUsers;
 $customerPanelLink = $KeyAuthApp->customerPanelLink;
 ?>
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
-
+<html lang="en">
 <head>
-    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Vertex Regedit</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 0px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav li {
+            margin-right: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #eee;
+        }
+
+        main {
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li style="float:right"><a class="active" href="logout.php">Logout</a></li>
-        </ul>
-    </nav>
 
-   
+    <header>
+        <nav>
+            <div>
+                <h1>Vertex Regedit</h1>
+            </div>
+            <ul>
+                <li><a href="index.php">Dashboard</a></li>
+                <li><a href="store.php">Store</a></li>
+                <li><a href="upgrade.php">Upgrade</a></li>
+                <li><a href="download.php">Download</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="d-flex flex-column flex-root">
+    <main>
+        <!-- Your main content goes here -->
+    </main>
+
+</body>
+
+</html>
+
+    <div class="container">
+        <div class="account-info">
+            <h2>Account Info</h2>
+            <div class="info-item">Username: <span></span></div>
+            <div class="info-item">Password: <span></span></div>
+            <div class="info-item">Status: <span class="status-active">Active</span></div>
+            <button>Update Roles</button>
+        </div>
+
+      
+
+        <div class="reset-device-id">
+            <h2>Reset Device ID</h2>
+            <p>If you want to reset your windows or if you see "Please login from registered device" then click the reset button below</p>
+            <p class="warning">Warning: If you try to use the panel in two different pc, then your account will be suspended.</p>
+            <div class="d-flex flex-column flex-root">
 
         <div class="page d-flex flex-row flex-column-fluid">
 
@@ -78,15 +148,14 @@ $customerPanelLink = $KeyAuthApp->customerPanelLink;
                         <div class="d-flex align-items-center d-lg-none ms-n2 me-2" title="Show aside menu">
                             <div class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px" id="kt_aside_mobile_toggle">
 
-                                <span class="svg-icon svg-icon-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                        <path d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z" fill="black"></path>
-                                        <path opacity="0.3" d="M21 14H3C2.4 14 2 13.6 2 13V11C2 10.4 2.4 10 3 10H21C21.6 10 22 10.4 22 11V13C22 13.6 21.6 14 21 14ZM22 20V18C22 17.4 21.6 17 21 17H3C2.4 17 2 17.4 2 18V20C2 20.6 2.4 21 3 21H21C21.6 21 22 20.6 22 20Z" fill="black"></path>
-                                    </svg>
-                                </span>
+                                
 
                             </div>
                         </div>
+
+
+                        
+
 
                         <div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1">
 
@@ -122,20 +191,15 @@ $customerPanelLink = $KeyAuthApp->customerPanelLink;
                         <div id="kt_content_container" class="container-xxl">
                             <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 
-                                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1"><?php echo $name; ?> panel
-                                    <span class="h-20px border-gray-200 border-start ms-3 mx-2"></span>
-                                </h1>
+                               
 
                             </div>
                             <br>
                             <br>
                             <div class="card mb-xl-8">
 
-                                <div class="card-header border-0 pt-5">
-                                    <h3 class="card-title align-items-start flex-column">
-                                        <span class="card-label fw-bolder fs-3 mb-1">Application</span>
-                                    </h3>
-                                </div>
+                               
+                               
 
 
                                 <div class="card-body py-3">
@@ -172,18 +236,17 @@ $customerPanelLink = $KeyAuthApp->customerPanelLink;
 
 
 
-                                    
+                                    ?>
 
-                                    
+                                    <br>
+                                    <a href="<?php echo $download; ?>" style="color:#00FFFF;" target="appdownload"><?php echo $download; ?></a>
+                                </div>
+
+
+                            </div>
+
 
                            
-                            
-
-
-
-
-                            ?>
-
                         </div>
 
                     </div>
@@ -192,13 +255,6 @@ $customerPanelLink = $KeyAuthApp->customerPanelLink;
 
 
                
-
-            </div>
-
-        </div>
-
-    </div>
-
 
 
     <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
@@ -212,7 +268,7 @@ $customerPanelLink = $KeyAuthApp->customerPanelLink;
         </span>
 
     </div>
-    
+   
     <script>
         var going = 1;
 
@@ -315,3 +371,7 @@ if ($subscription === "Premium") {
 */
 #endregion
 ?>
+        </div>
+    </div>
+</body>
+</html>
