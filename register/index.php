@@ -6,124 +6,271 @@ if (session_status() === PHP_SESSION_NONE) {
 	session_start();
 }
 
-if (isset($_SESSION['un'])) {
-	header("Location: ../dashboard/");
-	exit();
-}
+
 
 
 
 ?>
 <!DOCTYPE html>
-<html lang="en" class="bg-[#09090d] text-white overflow-x-hidden">
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertex Regedit</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background-color: #f4f4f4;
+        }
 
-    <?php
-	echo '
-	    <title>KeyAuth - Register to ' . $name . ' Panel</title>
-	    <meta name="og:image" content="https://cdn.keyauth.cc/front/assets/img/favicon.png">
-        <meta name="description" content="Register to reset your HWID or download ' . $name . '">
-        ';
-	?>
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 0px 0;
+        }
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
 
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.keyauth.cc/v3/dist/output.css" />
+        nav li {
+            margin-right: 20px;
+        }
 
-    <script>
-    if (window.history.replaceState) {
-        window.history.replaceState(null, null, window.location.href);
-    }
-    </script>
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #eee;
+        }
+
+        main {
+            padding: 20px;
+        }
+    </style>
 </head>
-
 <body>
-    <!--Navbar-->
+
     <header>
-        <nav class="border-gray-200 px-4 lg:px-6 py-2.5 mb-14">
-            <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-                <a href="../" class="flex items-center">
-                    <img src="https://cdn.keyauth.cc/v2/assets/media/logos/logo-1-dark.png" class="mr-3 h-12 mt-2"
-                        alt="KeyAuth Logo" />
-                </a>
+        <nav>
+            <div>
+                <h1>Vertex Regedit</h1>
             </div>
+            <ul>
+                <li><a href="index.php">Store</a></li>
+                <li><a href="register.php">Register</a></li>
+            </ul>
         </nav>
     </header>
 
-    <section>
-        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 grid lg:grid-cols-2 gap-8 lg:gap-16">
-            <div class="flex flex-col justify-center">
-                <h1
-                    class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white-900 md:text-5xl lg:text-6xl">
-                    Register with <?= $name; ?></h1>
-                <p class="mb-6 text-lg font-normal text-gray-500 lg:text-xl">Please register an account for the panel
-                    you are trying to access.
-                    This page is <b>NOT</b> the KeyAuth register page. If you do not know how you got here, or if you
-                    were not given permission to access
-                    this panel, please exit the page now.
-                </p>
-            </div>
-            <div>
-                <div class="w-full lg:max-w-xl p-6 space-y-8 sm:p-8 bg-[#09090d] rounded-lg shadow-xl">
-                    <form class="mt-8 space-y-6" method="post">
-                        <div class="relative">
-                            <input type="text" name="username"
-                                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-white-900 bg-transparent rounded-lg border-1 border-gray-700 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" " autocomplete="on" required />
-                            <label for="username"
-                                class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-[#09090d] px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Username</label>
-                        </div>
-                        <div class="relative">
-                            <input type="password" name="password"
-                                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-white-900 bg-transparent rounded-lg border-1 border-gray-700 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" " autocomplete="on" required />
-                            <label for="password"
-                                class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-[#09090d] px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Password</label>
-                        </div>
-                        <div class="relative">
-                            <input type="text" name="license"
-                                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-white-900 bg-transparent rounded-lg border-1 border-gray-700 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" " autocomplete="on" required />
-                            <label for="license"
-                                class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-[#09090d] px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">License</label>
-                        </div>
-                        <button name="register"
-                            class="w-full px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-full">Register
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+    <main>
+        <!-- Your main content goes here -->
+    </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
-    <script src="https://cdn.keyauth.cc/v3/dist/flowbite.js"></script>
-
-    <?php
-	if (isset($_POST['register'])) {
-		if ($KeyAuthApp->register($_POST['username'], $_POST['password'], $_POST['license'])) {
-			$_SESSION['un'] = $_POST['username'];
-			echo "<meta http-equiv='Refresh' Content='2; url=../dashboard/'>";
-			echo '
-                        <script type=\'text/javascript\'>
-                        
-                        const notyf = new Notyf();
-                        notyf
-                          .success({
-                            message: \'You have successfully registered!\',
-                            duration: 3500,
-                            dismissible: true
-                          });                
-                        
-                        </script>
-                        ';
-		}
-	}
-	?>
 </body>
-
 </html>
+<main role="main" class="flex-shrink-0 ">
+<div class="padding-extra"><style>
+body {
+    font-family: 'Roboto', sans-serif;
+}
+a {
+    text-decoration: none;
+}
+.product-card {
+    box-shadow: 0 2px 7px #dfdfdf;
+    background: #fafafa;
+}
+.badge {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    background: red;
+    color: #fff;
+    padding: 3px 10px;
+}
+.product-tumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    padding: 50px;
+    background: #f0f0f0;
+}
+.product-tumb img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.product-details {
+    padding: 30px;
+}
+.product-catagory {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ccc;
+    margin-bottom: 18px;
+}
+.product-details h4 a {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+    color: #363636;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.product-details h4 a:hover {
+    color: #fbb72c;
+}
+.product-details p {
+    font-size: 15px;
+    line-height: 22px;
+    margin-bottom: 18px;
+    color: #999;
+}
+.product-bottom-details {
+    overflow: hidden;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+.product-bottom-details div {
+    float: left;
+    width: 50%;
+}
+.product-price {
+    font-size: 18px;
+    color: #fbb72c;
+    font-weight: 600;
+}
+.product-price small {
+    font-size: 80%;
+    font-weight: 400;
+    text-decoration: line-through;
+    display: inline-block;
+    margin-right: 5px;
+}
+.product-links {
+    text-align: right;
+}
+.product-links a {
+    display: inline-block;
+    margin-left: 5px;
+    color: #e1e1e1;
+    transition: 0.3s;
+    font-size: 17px;
+}
+.product-links a:hover {
+    color: #fbb72c;
+}
+</style>
+    <div class="row">
+                                    <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="product-card my-2">
+                        <div class="">
+                            <img class="img-fluid" src="assets/matrix-banner-2.png" alt="Vertex Aimbot &amp; Sniper" alt="">
+                        </div>
+                        <div class="product-details">
+                            <span class="product-catagory">Software</span>
+                            <h4><a href="">Vertex Aimbot &amp; Sniper</a></h4>
+                            <strong>Monthly Price:</strong> ₹ 1,200.00 / $ 15.00<br>
+                            <strong>Yearly Price:</strong> ₹ 3,700.00 / $ 45.00                           
+		</div>
+						 <div class="">
+                                   
+                                    <div class="d-flex justify-content-between">
+                                        <a class="btn btn-dark w-100 rounded-bottom py-2" href="?code=supreme_essential">View Details</a>
+                                    </div>
+
+			</div>
+	</div>
+	
+
+            </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="product-card my-2">
+                        <div class="">
+                            <img class="img-fluid" src="assets/matrix-banner-2.png" alt="Vertex Aimbot" alt="">
+                        </div>
+                        <div class="product-details">
+                            <span class="product-catagory">Software</span>
+                            <h4><a href="">Vertex Aimbot</a></h4>
+                            <strong>Monthly Price:</strong> ₹ 900.00 / $ 10.00<br>
+                            <strong>Yearly Price:</strong> ₹ 2,500.00 / $ 30.00                           
+		</div>
+						 <div class="">
+                                   
+                                    <div class="d-flex justify-content-between">
+                                        <a class="btn btn-dark w-100 rounded-bottom py-2" href="?code=supreme">View Details</a>
+                                    </div>
+
+			</div>
+	</div>
+	
+
+            </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="product-card my-2">
+                        <div class="">
+                            <img class="img-fluid" src="assets/matrix-banner-2.png" alt="Vertex Sniper" alt="">
+                        </div>
+                        <div class="product-details">
+                            <span class="product-catagory">Software</span>
+                            <h4><a href="">Vertex Sniper</a></h4>
+                            <strong>Monthly Price:</strong> ₹ 900.00 / $ 10.00<br>
+                            <strong>Yearly Price:</strong> ₹ 2,500.00 / $ 30.00                           
+		</div>
+						 <div class="">
+                                   
+                                    <div class="d-flex justify-content-between">
+                                        <a class="btn btn-dark w-100 rounded-bottom py-2" href="?code=essential">View Details</a>
+                                    </div>
+
+			</div>
+	</div>
+	
+
+            </div>
+                        
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="product-card my-2">
+                        <div class="">
+                            <img class="img-fluid" src="assets/matrix-banner-2.png" alt="Vertex Emulator" alt="">
+                        </div>
+                        <div class="product-details">
+                            <span class="product-catagory">Software</span>
+                            <h4><a href="">Vertex Emulator</a></h4>
+                            <strong>Monthly Price:</strong> ₹ 900.00 / $ 10.00<br>
+                            <strong>Yearly Price:</strong> ₹ 3,700.00 / $ 45.00                           
+		</div>
+						 <div class="">
+                                   
+                                    <div class="d-flex justify-content-between">
+                                        <a class="btn btn-dark w-100 rounded-bottom py-2" href="?code=emulator">View Details</a>
+                                    </div>
+
+			</div>
+	</div>
+	
+
+            </div>
+                        
