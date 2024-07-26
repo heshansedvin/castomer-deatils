@@ -11,11 +11,7 @@ if (isset($_SESSION['un'])) {
 	exit();
 }
 
-$KeyAuthApp = new KeyAuth\api($name, $OwnerId);
 
-if (!isset($_SESSION['sessionid'])) {
-	$KeyAuthApp->init();
-}
 
 ?>
 <!DOCTYPE html>

@@ -17,6 +17,7 @@ if (isset($_POST['logout'])) {
 }
 
 
+
 $KeyAuthApp = new KeyAuth\api($name, $OwnerId);
 
 $url = "https://keyauth.win/api/seller/?sellerkey={$SellerKey}&type=getsettings";
@@ -45,59 +46,24 @@ $customerPanelLink = $KeyAuthApp->customerPanelLink;
 <html dir="ltr" lang="en">
 
 <head>
-    <base href="">
-    <title><?php echo $name; ?> Panel</title>
-    <meta charset="utf-8">
-    <link rel="shortcut icon" href="https://cdn.keyauth.cc/v2/panel/media/logos/favicon.ico">
-
-    <link href="https://cdn.keyauth.cc/v2/panel/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css">
-
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
-    <link href="https://cdn.keyauth.cc/v2/panel/plugins/global/plugins.dark.bundle.css" rel="stylesheet" type="text/css">
-    <link href="https://cdn.keyauth.cc/v2/panel/css/style.dark.bundle.css" rel="stylesheet" type="text/css">
-    <script src="https://cdn.keyauth.uk/dashboard/unixtolocal.js"></script>
-    <style>
-        .secret {
-            color: transparent;
-            text-shadow: 0px 0px 5px #b2b9bf;
-            transition: text-shadow 0.1s linear;
-        }
-
-        .secret:hover {
-            text-shadow: 0px 0px 0px #b2b9bf;
-        }
-
-        .secretlink {
-            color: transparent;
-            text-shadow: 0px 0px 5px #007bff;
-            transition: text-shadow 0.1s linear;
-        }
-
-        .secretlink:hover {
-            text-shadow: 0px 0px 0px #007bff;
-            color: transparent;
-        }
-    </style>
-
-    <script type="text/javascript">
-        if (window.history.replaceState) {
-            window.history.replaceState(null, null, window.location.href);
-        }
-    </script>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li style="float:right"><a class="active" href="logout.php">Logout</a></li>
+        </ul>
+    </nav>
 
-<body id="kt_body" class="page-loading-enabled header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed aside-enabled aside-fixed" style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
-    <div class="header-menu align-items-stretch drawer drawer-end" data-kt-drawer="true" data-kt-drawer-name="header-menu" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="{default:'
-    200px', '300px' : '250px' }" data-kt-drawer-direction="end" data-kt-drawer-toggle="#kt_header_menu_mobile_toggle" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_body', lg: '#kt_header_nav'}" style="width: 250px !important;">
-        <div class="menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-700 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold my-5 my-lg-0 align-items-stretch" id="#kt_header_menu" data-kt-menu="true">
-            <div class="menu-item me-lg-1">
-                <form method="post" style="margin-top: 12px;">
-                    <button name="logout" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-power-off fa-sm text-white-50"></i> Log out</button>
-                </form>
-            </div>
-        </div>
-    </div>
+   
 
     <div class="d-flex flex-column flex-root">
 
@@ -121,14 +87,6 @@ $customerPanelLink = $KeyAuthApp->customerPanelLink;
 
                             </div>
                         </div>
-
-
-                        <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-                            <a href="./" class="d-lg-none">
-                                <img alt="Logo" src="https://cdn.keyauth.cc/v2/panel/media/logos/favicon.ico" class="h-30px">
-                            </a>
-                        </div>
-
 
                         <div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1">
 
@@ -214,62 +172,12 @@ $customerPanelLink = $KeyAuthApp->customerPanelLink;
 
 
 
-                                    ?>
+                                    
 
-                                    <br>
-                                    <a href="<?php echo $download; ?>" style="color:#00FFFF;" target="appdownload"><?php echo $download; ?></a>
-                                </div>
+                                    
 
-
-                            </div>
-
-
-                            <?php
-
-                            if (!is_null($webdownload)) {
-                            ?>
-                                <div class="card mb-xl-8">
-
-                                    <div class="card-header border-0 pt-5">
-                                        <h3 class="card-title align-items-start flex-column">
-                                            <span class="card-label fw-bolder fs-3 mb-1">Web Loader</span>
-                                        </h3>
-                                    </div>
-
-
-                                    <div class="card-body py-3">
-                                        <div class="col-10" style="display:none;" id="buttons">
-                                            <?php
-
-                                            $url = "https://keyauth.win/api/seller/?sellerkey={$SellerKey}&type=fetchallbuttons";
-
-
-                                            $curl = curl_init($url);
-                                            curl_setopt($curl, CURLOPT_URL, $url);
-                                            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-                                            $resp = curl_exec($curl);
-                                            $json = json_decode($resp);
-                                            $arr = $json->buttons;
-
-                                            if ($arr == "not_found") {
-                                                echo '<div style="color:red;">No buttons found</div>';
-                                            } else {
-                                                foreach ($arr as $item) {
-                                            ?>
-                                                <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" onclick="doButton(this.value)" value="<?php echo $item->value; ?>"><?php echo $item->text; ?></button>
-                                            <?php
-                                                }
-                                            } ?>
-                                        </div>
-                                        <div class="col-10" id="handshake">
-                                            <a onclick="handshake()" href="<?php echo $webdownload; ?>" style="color:white;" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Download</a>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            <?php
-                            }
+                           
+                            
 
 
 
@@ -283,21 +191,7 @@ $customerPanelLink = $KeyAuthApp->customerPanelLink;
                 </div>
 
 
-                <div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
-
-                    <div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
-
-                        <div class="text-dark order-2 order-md-1">
-                            <span class="text-gray-800">Copyright © 2020-
-                                <script type="text/javascript">
-                                    document.write(new Date().getFullYear())
-                                </script> · KeyAuth LLC
-                            </span>
-                        </div>
-
-                    </div>
-
-                </div>
+               
 
             </div>
 
@@ -318,15 +212,7 @@ $customerPanelLink = $KeyAuthApp->customerPanelLink;
         </span>
 
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
-
-    <script src="https://cdn.keyauth.cc/v2/panel/plugins/global/plugins.bundle.js" type="text/javascript"></script>
-    <script src="https://cdn.keyauth.cc/v2/panel/js/scripts.bundle.js" type="text/javascript"></script>
-
-
-    <script src="https://cdn.keyauth.cc/v2/panel/plugins/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
-    <script src="https://cdn.keyauth.cc/v2/panel/plugins/custom/datatables/datatables.js" type="text/javascript"></script>
-
+    
     <script>
         var going = 1;
 
