@@ -2,19 +2,7 @@
 include '../credentials.php';
 require '../keyauth.php';
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
 
-if (!isset($_SESSION['un'])) {
-    die("not logged in");
-}
-
-if (isset($_POST['logout'])) {
-    session_destroy();
-    header("Location: ../");
-    exit();
-}
 
 
 
@@ -48,52 +36,7 @@ $customerPanelLink = $KeyAuthApp->customerPanelLink;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vertex Regedit</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: sans-serif;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 0px 0;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-
-        nav li {
-            margin-right: 20px;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: #eee;
-        }
-
-        main {
-            padding: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="store.css">
 </head>
 <body>
 
@@ -119,104 +62,7 @@ $customerPanelLink = $KeyAuthApp->customerPanelLink;
 </body>
 </html>
 <main role="main" class="flex-shrink-0 ">
-<div class="padding-extra"><style>
-body {
-    font-family: 'Roboto', sans-serif;
-}
-a {
-    text-decoration: none;
-}
-.product-card {
-    box-shadow: 0 2px 7px #dfdfdf;
-    background: #fafafa;
-}
-.badge {
-    position: absolute;
-    left: 0;
-    top: 20px;
-    text-transform: uppercase;
-    font-size: 13px;
-    font-weight: 700;
-    background: red;
-    color: #fff;
-    padding: 3px 10px;
-}
-.product-tumb {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 200px;
-    padding: 50px;
-    background: #f0f0f0;
-}
-.product-tumb img {
-    max-width: 100%;
-    max-height: 100%;
-}
-.product-details {
-    padding: 30px;
-}
-.product-catagory {
-    display: block;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #ccc;
-    margin-bottom: 18px;
-}
-.product-details h4 a {
-    font-weight: 500;
-    display: block;
-    margin-bottom: 18px;
-    text-transform: uppercase;
-    color: #363636;
-    text-decoration: none;
-    transition: 0.3s;
-}
-.product-details h4 a:hover {
-    color: #fbb72c;
-}
-.product-details p {
-    font-size: 15px;
-    line-height: 22px;
-    margin-bottom: 18px;
-    color: #999;
-}
-.product-bottom-details {
-    overflow: hidden;
-    border-top: 1px solid #eee;
-    padding-top: 20px;
-}
-.product-bottom-details div {
-    float: left;
-    width: 50%;
-}
-.product-price {
-    font-size: 18px;
-    color: #fbb72c;
-    font-weight: 600;
-}
-.product-price small {
-    font-size: 80%;
-    font-weight: 400;
-    text-decoration: line-through;
-    display: inline-block;
-    margin-right: 5px;
-}
-.product-links {
-    text-align: right;
-}
-.product-links a {
-    display: inline-block;
-    margin-left: 5px;
-    color: #e1e1e1;
-    transition: 0.3s;
-    font-size: 17px;
-}
-.product-links a:hover {
-    color: #fbb72c;
-}
-</style>
+<div class="padding-extra">
     <div class="row">
                                     <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="product-card my-2">

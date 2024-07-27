@@ -2,19 +2,7 @@
 include '../credentials.php';
 require '../keyauth.php';
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
 
-if (!isset($_SESSION['un'])) {
-    die("not logged in");
-}
-
-if (isset($_POST['logout'])) {
-    session_destroy();
-    header("Location: ../");
-    exit();
-}
 
 
 
