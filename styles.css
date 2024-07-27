@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #000000;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,7 +22,7 @@ input[type=text], input[type=password] {
     padding: 10px;
     margin: 8px 0;
     box-sizing: border-box;
-    border: 1px solid #ccc;
+    border: 1px solid #77e47cbd;
     border-radius: 4px;
 }
 

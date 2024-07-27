@@ -44,7 +44,7 @@ if (!isset($_SESSION['sessionid'])) {
                     <?= $name; ?></h1>
             </div>
             <div>
-                <div class="w-full lg:max-w-xl p-6 space-y-8 sm:p-8 bg-[#09090d] rounded-lg shadow-xl">
+                <div class="w-full lg:max-w-xl p-6 space-y-8 sm:p-8 bg-[#000000] rounded-lg shadow-xl">
                     <form class="mt-8 space-y-6" method="post">
                         <div class="relative">
                             <input type="text" name="username"
