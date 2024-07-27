@@ -63,8 +63,8 @@ if (!isset($_SESSION['sessionid'])) {
                         <button name="login"
                             class="w-full px-5 py-3 text-base font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:ring-green-300 sm:w-full">Login To Vertex</button>
                             
-                        <div class="text-sm font-medium text-white-900 register">
-                           <a href="../register/" class="text-green-600 hover:underline">Create New Account
+                        <div class="text-sm font-medium text-white-900">
+                           <a href="../register/" class="text-green-600 hover:underline register">Register
                                 </a>
                         </div>
                         
